@@ -4,7 +4,7 @@ version := "0.0.1"
 
 scalaVersion := "2.10.2"
 
-organization := "seraph"
+organization := "jp.seraphr"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "1.9.1" % "test"
 
