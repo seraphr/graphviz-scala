@@ -12,3 +12,5 @@ libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.10.0" % "test"
 
 EclipseKeys.withSource := true
 
+EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource
+
