@@ -11,8 +11,9 @@ import java.io.File
 import scala.util.Try
 import scala.util.Success
 
-trait Graphviz { self: GraphvizConf with LoanPatterns =>
+trait Graphviz { self: GraphvizConf =>
   import scala.sys.process._
+  import loanPatterns._
 
   def generateGraph(aInput: InputStream, aFile: File): Option[Seq[String]] =
     aFile.openOutput(aOutput => generateGraph(aInput, aOutput))
@@ -47,4 +48,5 @@ trait GraphvizConf {
 
   lazy val imageType = "png"
   lazy val layout = "dot"
+  val loanPatterns: LoanPatterns
 }

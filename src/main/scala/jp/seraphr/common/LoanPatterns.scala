@@ -19,29 +19,27 @@ trait LoanPatternConf {
 }
 
 trait LoanPatterns { self: LoanPatternConf =>
-  implicit class PatternUtil(file: File)(implicit aPattern: LoanPatterns) {
+  implicit class PatternUtil(file: File) {
     def openIterator[_Result](f: Iterator[String] => _Result, aCharset: Charset = defaultEnc) = {
-      aPattern.openIterator(file, aCharset)(f)
+      self.openIterator(file, aCharset)(f)
     }
 
     def openReader[_Result](f: Reader => _Result, aCharset: Charset = defaultEnc) = {
-      aPattern.openReader(file, aCharset)(f)
+      self.openReader(file, aCharset)(f)
     }
 
     def openInput[_Result](f: InputStream => _Result) = {
-      aPattern.openInput(file)(f)
+      self.openInput(file)(f)
     }
 
     def openWriter[_Result](f: Writer => _Result, aCharset: Charset = defaultEnc) = {
-      aPattern.openWriter(file, aCharset)(f)
+      self.openWriter(file, aCharset)(f)
     }
 
     def openOutput[_Result](f: OutputStream => _Result) = {
-      aPattern.openOutput(file)(f)
+      self.openOutput(file)(f)
     }
   }
-
-  protected implicit val impl: LoanPatterns = this
 
   type Closable = { def close(): Unit }
 
